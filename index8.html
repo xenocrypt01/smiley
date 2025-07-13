@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML Code Sniffer</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
@@ -9,13 +10,13 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden;
       font-family: 'Orbitron', monospace;
       color: #00ffcc;
+      background: #000;
     }
 
     #bg-video {
@@ -32,9 +33,8 @@
     .content-wrapper {
       position: relative;
       z-index: 1;
-      padding: 30px;
-      overflow-y: auto;
-      height: 100vh;
+      padding: 30px 20px 80px;
+      min-height: 100vh;
       background: linear-gradient(135deg, #000000aa 0%, #0a0f1aaa 100%);
     }
 
@@ -95,7 +95,6 @@
       box-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
     }
 
-    /* Animated Color-Changing Buttons */
     .btn-link {
       color: #000;
     }
@@ -185,13 +184,11 @@
 </head>
 <body>
 
-  <!-- Background Video -->
   <video autoplay muted loop id="bg-video">
     <source src="https://files.catbox.moe/yuhyp5.mp4" type="video/mp4">
     Your browser does not support HTML5 video.
   </video>
 
-  <!-- Main Content -->
   <div class="content-wrapper">
     <div class="container">
       <h1>🔍 HTML Code Viewer</h1>
@@ -208,12 +205,10 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <div class="footer">
     ⚡ Built for dev learning — by <a href="#">MR SMILE</a> • Use responsibly
   </div>
 
-  <!-- Script -->
   <script>
     async function getSource() {
       const url = document.getElementById("url").value.trim();
@@ -236,5 +231,6 @@
       }
     }
   </script>
+
 </body>
 </html>
