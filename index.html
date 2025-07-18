@@ -86,6 +86,58 @@
         .social-links a:hover {
             color: #fff;
         }
+        .menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px; /* Changed from left to right */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.menu-toggle div {
+    background-color: #00f5ff;
+    height: 4px;
+    border-radius: 2px;
+}
+
+   #side-menu {
+    position: fixed;
+    top: 0;
+    right: -200px;
+    width: 200px;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    transition: right 0.3s ease;
+    z-index: 999;
+    padding-top: 60px;
+}
+
+#side-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+#side-menu li {
+    padding: 15px;
+    text-align: center;
+}
+
+#side-menu a {
+    color: #00f5ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#side-menu a:hover {
+    color: #fff;
+}
+        
     </style>
 </head>
 <body>
@@ -95,13 +147,8 @@
     Your browser does not support the video tag.
 </video>
     
-    <svg width="100%" height="60" viewBox="0 0 1000 60">
-  <text x="50" y="50" font-family="monospace" font-size="40" fill="#00f5ff">
-    <tspan id="typing-text"></tspan>
-  </text>
-</svg>
-
 <script>
+
   const text = "WELCOME TO MR SMILE MODDERS APP";
   const typingElement = document.getElementById('typing-text');
   let index = 0;
@@ -160,7 +207,6 @@
 
     document.getElementById('sysInfo').textContent = getSystemInfo();
 </script>
-
 
         <div class="menu-title">MR SMILE PROJECT SUPPORT</div>
 <div class="menu-grid">
@@ -263,17 +309,38 @@
             </div>
         </div>
     </div>
-
-    <div class="menu-item" onclick="window.location.href='index12.html'">
-        <div class="menu-item-content">
-            <div class="item-icon"><i class="fas fa-comment-dots"></i></div>
-            <div>
-                <div class="item-name">CONTACT DEVELOPER</div>
-                <div class="item-desc">Contact my developer on WhatsApp.</div>
-            </div>
+<div class="menu-item" onclick="window.location.href='index12.html'">
+    <div class="menu-item-content">
+        <div class="item-icon"><i class="fas fa-comment-dots"></i></div>
+        <div>
+            <div class="item-name">CONTACT DEVELOPER</div>
+            <div class="item-desc">Contact my developer on WhatsApp.</div>
         </div>
     </div>
 </div>
+
+<div style="margin-top: 15px;">
+    <button onclick="window.location.href='index100.html'" style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(135deg, #ff0055, #ff5500);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      width: 100%;
+    ">
+      <img src="https://files.catbox.moe/2tav40.jpg" alt="big image" style="width: 100%; border-radius: 8px; margin-bottom: 12px;">
+      
+      <div style="font-weight: bold; font-size: 20px;">HACK</div>
+      <div style="font-size: 13px; text-align: center;">USE THIS TOOLS PROPERLY AND HANDLE WITH CARE</div>
+    </button>
+</div>
+    
       
       
       
@@ -343,6 +410,7 @@
     updateTime();
     setInterval(updateTime, 1000);
     updateBattery();
+    
 </script>
 
 <div id="battery" style="margin-top:10px; color: #ccc;"></div>
