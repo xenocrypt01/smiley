@@ -26,6 +26,12 @@
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
+            transition: background 0.3s ease;
+        }
+
+        body.light-mode {
+            background: linear-gradient(135deg, #f5f7fa, #e4e8f0);
+            color: #333;
         }
 
         .video-bg {
@@ -48,6 +54,12 @@
             border-radius: 20px;
             border: 1px solid rgba(0, 245, 255, 0.2);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .light-mode .container {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .header {
@@ -98,6 +110,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .light-mode .menu-item {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .menu-item:hover {
@@ -126,6 +144,10 @@
         .item-desc {
             font-size: 0.9rem;
             color: #ccc;
+        }
+
+        .light-mode .item-desc {
+            color: #666;
         }
 
         .footer {
@@ -160,7 +182,70 @@
             text-align: center;
         }
 
-        /* Animation for menu items */
+        /* Tooltips */
+        [data-tooltip] {
+            position: relative;
+        }
+
+        [data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 100;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 245, 255, 0.2);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--primary);
+            z-index: 1000;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            margin: 1rem auto;
+            max-width: 500px;
+            position: relative;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 50px;
+            border: 1px solid var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .light-mode #search-input {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+        }
+
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -190,6 +275,12 @@
         Your browser does not support the video tag.
     </video>
 
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search tools...">
+        <i class="fas fa-search"></i>
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="greeting" id="greeting">Welcome</div>
@@ -207,7 +298,7 @@
         <div class="menu-title">MR SMILE PROJECT SUPPORT</div>
 
         <div class="menu-grid">
-            <div class="menu-item" onclick="window.location.href='index2.html'">
+            <div class="menu-item" onclick="window.location.href='index2.html'" data-tooltip="One-click AI optimization for photos or data.">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-magic"></i></div>
                     <div>
@@ -217,7 +308,7 @@
                 </div>
             </div>
 
-            <div class="menu-item" onclick="window.location.href='index3.html'">
+            <div class="menu-item" onclick="window.location.href='index3.html'" data-tooltip="Create servers and host bot free.">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-server"></i></div>
                     <div>
@@ -227,7 +318,7 @@
                 </div>
             </div>
 
-            <div class="menu-item" onclick="window.location.href='index4.html'">
+            <div class="menu-item" onclick="window.location.href='index4.html'" data-tooltip="Place and style text with 20+ fonts.">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-font"></i></div>
                     <div>
@@ -237,7 +328,7 @@
                 </div>
             </div>
 
-            <div class="menu-item" onclick="window.location.href='index5.html'">
+            <div class="menu-item" onclick="window.location.href='index5.html'" data-tooltip="Erase, blur, or replace backgrounds easily.">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-eraser"></i></div>
                     <div>
@@ -247,7 +338,7 @@
                 </div>
             </div>
 
-            <div class="menu-item" onclick="window.location.href='index6.html'">
+            <div class="menu-item" onclick="window.location.href='index6.html'" data-tooltip="I'm an assistant AI chatbot created by MR SMILE community.">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-robot"></i></div>
                     <div>
@@ -257,7 +348,7 @@
                 </div>
             </div>
 
-            <div class="menu-item" onclick="window.location.href='index7.html'">
+            <div class="menu-item" onclick="window.location.href='index7.html'" data-tooltip="Create any developer ID by uploading picture, name and description.">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-image"></i></div>
                     <div>
@@ -267,7 +358,7 @@
                 </div>
             </div>
 
-            <div class="menu-item" onclick="window.location.href='index8.html'">
+            <div class="menu-item" onclick="window.location.href='index8.html'" data-tooltip="Steal any website codes here just paste link https://.">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-code"></i></div>
                     <div>
@@ -277,7 +368,7 @@
                 </div>
             </div>
 
-            <div class="menu-item" onclick="window.location.href='index9.html'">
+            <div class="menu-item" onclick="window.location.href='index9.html'" data-tooltip="Create api key for Instagram followers and likes booster.">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-key"></i></div>
                     <div>
@@ -287,7 +378,7 @@
                 </div>
             </div>
 
-            <div class="menu-item" onclick="window.location.href='index10.html'">
+            <div class="menu-item" onclick="window.location.href='index10.html'" data-tooltip="Use this tool to create any image you'd like">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-pencil"></i></div>
                     <div>
@@ -297,7 +388,7 @@
                 </div>
             </div>
 
-            <div class="menu-item" onclick="window.location.href='index11.html'">
+            <div class="menu-item" onclick="window.location.href='index11.html'" data-tooltip="Generate explicit content with this tool">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-fire"></i></div>
                     <div>
@@ -307,7 +398,7 @@
                 </div>
             </div>
 
-            <div class="menu-item" onclick="window.location.href='esim.html'">
+            <div class="menu-item" onclick="window.location.href='esim.html'" data-tooltip="Get foreign numbers here global after un encrypting by subscribing on YouTube channel.">
                 <div class="menu-item-content">
                     <div class="item-icon"><i class="fas fa-map"></i></div>
                     <div>
@@ -339,6 +430,23 @@
     </div>
 
     <script>
+
+        // Search Functionality
+        const searchInput = document.getElementById('search-input');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            menuItems.forEach(item => {
+                const itemName = item.querySelector('.item-name').textContent.toLowerCase();
+                if (itemName.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
         // Update greeting based on time of day
         function updateGreeting() {
             const now = new Date();
@@ -346,68 +454,68 @@
             let greeting = 'Welcome';
 
             if (hour < 12) {
-                greeting = 'Good Morning 🌄';
-            } else if (hour < 18) {
-                greeting = 'Good Afternoon ☀️';
-            } else {
-                greeting = 'Good Evening 🌙';
-            }
-            document.getElementById('greeting').textContent = greeting;
-        }
+                               greeting = 'Good Morning 🌄';  
+            } else if (hour < 18) {  
+                greeting = 'Good Afternoon ☀️';  
+            } else {  
+                greeting = 'Good Evening 🌙';  
+            }  
+            document.getElementById('greeting').textContent = greeting;  
+        }  
 
-        // Update time
-        function updateTime() {
-            const now = new Date();
-            document.getElementById('datetime').textContent = now.toLocaleTimeString();
-        }
+        // Update time  
+        function updateTime() {  
+            const now = new Date();  
+            document.getElementById('datetime').textContent = now.toLocaleTimeString();  
+        }  
 
-        // Simulate visitor count
-        function updateVisitorCount() {
-            const visitorNumber = Math.floor(Math.random() * 50) + 5;
-            document.getElementById('visitorNumber').textContent = visitorNumber;
-        }
+        // Simulate visitor count  
+        function updateVisitorCount() {  
+            const visitorNumber = Math.floor(Math.random() * 50) + 5;  
+            document.getElementById('visitorNumber').textContent = visitorNumber;  
+        }  
 
-        // Get system info
-        function getSystemInfo() {
-            const platform = navigator.platform;
-            const userAgent = navigator.userAgent;
-            const browser = (() => {
-                if (userAgent.indexOf("Chrome") > -1) return "Chrome";
-                if (userAgent.indexOf("Safari") > -1) return "Safari";
-                if (userAgent.indexOf("Firefox") > -1) return "Firefox";
-                if (userAgent.indexOf("MSIE") > -1 || !!document.documentMode) return "IE";
-                return "Unknown Browser";
-            })();
-            return `Platform: ${platform}, Browser: ${browser}`;
-        }
+        // Get system info  
+        function getSystemInfo() {  
+            const platform = navigator.platform;  
+            const userAgent = navigator.userAgent;  
+            const browser = (() => {  
+                if (userAgent.indexOf("Chrome") > -1) return "Chrome";  
+                if (userAgent.indexOf("Safari") > -1) return "Safari";  
+                if (userAgent.indexOf("Firefox") > -1) return "Firefox";  
+                if (userAgent.indexOf("MSIE") > -1 || !!document.documentMode) return "IE";  
+                return "Unknown Browser";  
+            })();  
+            return `Platform: ${platform}, Browser: ${browser}`;  
+        }  
 
-        // Update battery info
-        function updateBattery() {
-            if ('getBattery' in navigator) {
-                navigator.getBattery().then(battery => {
-                    function batteryInfo() {
-                        const level = Math.round(battery.level * 100);
-                        const status = battery.charging ? '🔌 Charging' : '🔋 Not Charging';
-                        document.getElementById('battery').textContent = `Battery: ${level}% - ${status}`;
-                    }
-                    batteryInfo();
-                    battery.addEventListener('levelchange', batteryInfo);
-                    battery.addEventListener('chargingchange', batteryInfo);
-                });
-            } else {
-                document.getElementById('battery').textContent = 'Battery info not supported';
-            }
-        }
+        // Update battery info  
+        function updateBattery() {  
+            if ('getBattery' in navigator) {  
+                navigator.getBattery().then(battery => {  
+                    function batteryInfo() {  
+                        const level = Math.round(battery.level * 100);  
+                        const status = battery.charging ? '🔌 Charging' : '🔋 Not Charging';  
+                        document.getElementById('battery').textContent = `Battery: ${level}% - ${status}`;  
+                    }  
+                    batteryInfo();  
+                    battery.addEventListener('levelchange', batteryInfo);  
+                    battery.addEventListener('chargingchange', batteryInfo);  
+                });  
+            } else {  
+                document.getElementById('battery').textContent = 'Battery info not supported';  
+            }  
+        }  
 
-        // Initialize
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        updateGreeting();
-        updateTime();
-        setInterval(updateTime, 1000);
-        updateVisitorCount();
-        setInterval(updateVisitorCount, 10000);
-        document.getElementById('sysInfo').textContent = getSystemInfo();
-        updateBattery();
-    </script>
-</body>
+        // Initialize  
+        document.getElementById('current-year').textContent = new Date().getFullYear();  
+        updateGreeting();  
+        updateTime();  
+        setInterval(updateTime, 1000);  
+        updateVisitorCount();  
+        setInterval(updateVisitorCount, 10000);  
+        document.getElementById('sysInfo').textContent = getSystemInfo();  
+        updateBattery();  
+    </script>  
+</body>  
 </html>
